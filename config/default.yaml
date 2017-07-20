@@ -19,19 +19,20 @@ apps:
 # Define how we want to log debug information, notices, warnings, errors, etc
 
 logging:
-    # Logging in the browser
-    html5:
-        # Log to the browser console
-        console:
-            channels: ">=debug"
-
-        # Send log messages back to the server (usually errors and up)
-        server:
-            channels:
-                - ">=error"
-
     # Logging on the server
     server:
+        file:
+            channels: [">=debug"]
+            config:
+                path: "./nodes"
+
+                # optional:
+                jsonIndent: 2
+                mode: "0600"
+                
+            fileNames:
+                "app.log": "all"
+                
         # Log to the terminal (hurts performance, not recommended in production)
         terminal:
             channels: ">=debug"
@@ -46,7 +47,7 @@ server:
     # The clientHost (a fancy word for the HTTP server that serves all requests)
     clientHost:
         # Make the HTTP server available on port 8080
-        bind: "http://0.0.0.0:8080"
+        bind: "http://0.0.0.0:0"
 
     # Configure which transports to use and in which order to attempt (websocket, longpolling, shortpolling)
     msgStream:
@@ -59,12 +60,18 @@ server:
 
     # MMRP is the messaging layer between node instances. Turn this on when you want to allow
     # asynchronous message passing to users. See production.yaml for an example.
-    mmrp: false
+    mmrp: 
+        bind:
+            host: "*"
+            port: "*" 
+        
 
     # Peers in the network should be discoverable. Use mdns or zookeeper.
     # See production.yaml for an example.
-    serviceDiscovery: false
-
+    serviceDiscovery: 
+        engine: zookeeper
+        options:
+            hosts: "127.0.0.1:2181"
 
 # This is where all of the configuration for your databases goes. We'll get you started with a
 # simple memoryVault and a fileVault. Keep in mind these are good for easy development, but have

@@ -1,46 +1,50 @@
 # mage-testproject-sharding
 
-## Introduction
+Simple project demonstrating how the `mage-module-shard`
+module can be used.
 
-
-
-## Requirements
-
-Make sure you have a `NODE_ENV` environment variable set up to describe your environment:
-
-### macOS, Linux
+## Installation
 
 ```shell
-# To verify the variable's value
-echo $NODE_ENV
-# To set the variable
-export NODE_ENV=development
-```
-
-### Windows
-
-```powershell
-# To verify the variable's value
-echo $env:NODE_ENV
-
-# To set the variable
-set-item env:NODE_ENV development
-```
-
-## Setup
-
-```shell
-git clone  mage-testproject-sharding
+git clone https://github.com/mage/mage-testproject-sharding.git
 cd mage-testproject-sharding
-npm install
-npm run archivist-create
-npm run develop
+npm install 
 ```
 
-## For more information
+## Running a cluster
 
-  * [MAGE Documentation](https://mage.github.io/mage/docs)
+You will need to open multiple terminal windows.
 
-## License
+### Zookeeper
 
-All rights reserved stelcheck
+Zookeeper will be used to coordinate the nodes between each others.
+
+```shell
+npm run zookeeper
+```
+
+### Nodes
+
+```
+npm run cluster node1 mage
+npm run cluster node2 mage
+# ...
+```
+
+Feel free to start as many nodes as you want.
+
+### Node0 (development console)
+
+```shell
+npm run cluster node0 develop
+```
+
+We will be emitting sharded calls to our cluster from
+this REPL interface.
+
+### Running a sharded module method
+
+From node0's development console:
+
+```javascript
+```

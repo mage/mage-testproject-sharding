@@ -9,7 +9,9 @@
   "scripts": {
     "help": "     echo 'Display help information (this screen)' &&   npm run",
     "mage": "     echo 'Run the mage binary'  &&                     mage",
-    "develop": "  echo 'Run MAGE in development mode' &&             npm run mage",
+    "develop": "  echo 'Run MAGE in development mode' &&             mage-console",
+    "zookeeper": "echo 'Run zookeeper' && docker run -it -p 2181:2181 zookeeper:3.4.10",
+    "cluster": "  echo 'Run a single node in cluster mode' &&    node ./scripts/run.js",
     "start": "    echo 'Start MAGE as a daemon' &&                   mage start",
     "stop": "     echo 'Stop the MAGE daemon' &&                     mage stop",
     "restart": "  echo 'Restart the MAGE daemon' &&                  mage restart",
@@ -25,6 +27,12 @@
     "node": "^4 || ^6 || ^7 || ^8"
   },
   "dependencies": {
-    "mage": "1.2.4"
+    "mage": "stelcheck/mage#chores/mdns",
+    "mage-console": "^0.2.0",
+    "mage-module-shard": "github:mage/mage-module-shard",
+    "mkdirp": "^0.5.1",
+    "node-zookeeper-client": "^0.2.2",
+    "typescript": "^2.4.2",
+    "zmq": "^2.15.3"
   }
 }

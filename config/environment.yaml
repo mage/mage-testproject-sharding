@@ -1,0 +1,11 @@
+logging:
+    server:
+      file:
+          config:
+              path: MAGE_LOGPATH:string
+
+daemon:
+  pidfile: MAGE_PIDFILE:string
+
+savvy:
+  sockfile: MAGE_SAVVY_SOCKFILE:string

@@ -9,12 +9,3 @@
 # Developers should set this to true in their environment, in order to enable dev specific features.
 
 developmentMode: true
-
-# Augmenting the default configuration for our server
-
-server:
-    clientHost:
-        # What the world will see us as (a full base URL)
-        expose: "http://127.0.0.1:8080/"
-        bind: "http://127.0.0.1:8080"
-
