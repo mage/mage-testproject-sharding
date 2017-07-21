@@ -27,9 +27,9 @@
     "node": "^4 || ^6 || ^7 || ^8"
   },
   "dependencies": {
-    "mage": "stelcheck/mage#chores/mdns",
+    "mage": "mage/mage",
     "mage-console": "^0.2.0",
-    "mage-module-shard": "github:mage/mage-module-shard",
+    "mage-module-shard": "mage/mage-module-shard",
     "mkdirp": "^0.5.1",
     "node-zookeeper-client": "^0.2.2",
     "typescript": "^2.4.2",
